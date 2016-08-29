@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<!--Meta Data-->
+		<title>My first website</title>
+		<!-- CSS -->
+		<link href="test.css" rel="stylesheet">
+		
+		<!-- Script Dependancies -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="test.js"></script>
+		
+	</head>
+	<body>
+		<h1>My First Algorithm</h1>
+		
+		<h2 id="result-div"></h2>
+		
+		<div style="margin: 10px 10px;">
+			<label for="x">X: </label>
+			<input id="x" class="inputbox" type="number" placeholder="enter value x"/>
+		</div>
+		
+		<div style="margin:10px 10px;">
+			<label for="y">Y:</label>
+			<input id="y" class="inputbox" type="number" placeholder="enter value y"/>
+		</div>
+		
+		<div style="margin:10px 10px;">
+			<label for="u">Username:</label>
+			<input id="u" class="inputbox" type="text" placeholder="enter username"/>
+		</div>
+		
+		<button id="run-button">Run</button>
+		
+		<button id="login-button">Login</button>
+		
+		
+		<script>
+			$('#run-button').on('click',function(e){
+				var xValue = parseInt($('#x').val());
+				var yValue = parseInt($('#y').val());
+				
+				var result = runAlgorithm(xValue,yValue);
+				addResultToH1(result);
+			});
+			
+			
+			$('#login-button').on('click',function(e){
+				var username = $('#u').val();
+				
+				$.post('https://insbee.sg/temp/test.php',{
+						user:username
+				},function(callback){
+					addResultToH1("<br>" + callback);
+				});
+			});
+		</script>
+	</body>
+</html>
